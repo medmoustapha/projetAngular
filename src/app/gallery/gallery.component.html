@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Gallery component</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onCherch(f.value)">
+       <div class="form-group">
+         <label class="control-label">Mot Clé:</label><br>
+         <input type="text" name="motCle"  required [(ngModel)]="motCle"><p></p>
+         <button type="submit" class="btn btn-primary">chercher</button>
+       </div>
+      </form>
+      <div class="row">
+        <div >
+          <div *ngFor="let p of pagePhotos?.hits" class="col-md-3">
+            <div class="panel panel-primary cadre">
+                <div class="panel-heading"> <img class="img-circle" src="{{p.userImageURL}}" width="50" height="50">{{p.user}}</div>
+                <div class="panel-body">
+                  <!--<div>{{p.tags}}</div>-->
+                  <img src="{{p.previewURL}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+           <ul class="nav nav-pills">
+
+                  <li *ngFor="let page of pages; let i=index" class="click" [ngClass]="{'active':curentPage==(i+1)}">
+                                  <a (click)="goToPage(i)">{{i}}</a>
+                   </li>
+
+           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
